@@ -132,6 +132,10 @@ In a real project, it can be further connected with:
 - table owner mapping
 - Feishu / email notifications
 
+In this demo, GitHub Actions is used as a lightweight CI example.  
+Whenever code is pushed to the repository, the workflow automatically runs `python main.py` to validate the configuration tables.  
+If validation issues are found, the workflow fails, simulating an automated quality gate in the development pipeline.
+
 ## 7. Demo Scope
 
 This demo currently supports:
