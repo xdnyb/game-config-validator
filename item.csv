@@ -1,0 +1,5 @@
+id,name,price,reward_id
+1,sword,100,10
+2,shield,-5,999
+2,bow,200,11
+3,staff,abc,10

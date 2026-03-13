@@ -1,0 +1,37 @@
+[
+  {
+    "table": "item.csv",
+    "row": 5,
+    "field": "price",
+    "rule": "type_check",
+    "message": "expected int, got 'abc'"
+  },
+  {
+    "table": "item.csv",
+    "row": 3,
+    "field": "price",
+    "rule": "range_check",
+    "message": "value -5 < min 0"
+  },
+  {
+    "table": "item.csv",
+    "row": 5,
+    "field": "price",
+    "rule": "range_check",
+    "message": "value 'abc' is not a valid int"
+  },
+  {
+    "table": "item.csv",
+    "row": 4,
+    "field": "id",
+    "rule": "unique_check",
+    "message": "duplicate value '2', first seen at row 3"
+  },
+  {
+    "table": "item.csv",
+    "row": 3,
+    "field": "reward_id",
+    "rule": "foreign_key_check",
+    "message": "value '999' not found in reward.csv.id"
+  }
+]
