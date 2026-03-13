@@ -1,0 +1,41 @@
+{
+  "item.csv": [
+    {
+      "type": "type",
+      "field": "id",
+      "expected": "int"
+    },
+    {
+      "type": "type",
+      "field": "price",
+      "expected": "int"
+    },
+    {
+      "type": "type",
+      "field": "reward_id",
+      "expected": "int"
+    },
+    {
+      "type": "range",
+      "field": "price",
+      "min": 0,
+      "max": 999999
+    },
+    {
+      "type": "unique",
+      "field": "id"
+    },
+    {
+      "type": "foreign_key",
+      "field": "reward_id",
+      "ref_table": "reward.csv",
+      "ref_field": "id"
+    }
+  ],
+  "reward.csv": [
+    {
+      "type": "unique",
+      "field": "id"
+    }
+  ]
+}
