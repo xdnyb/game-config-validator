@@ -2,7 +2,19 @@
 
 [![CI](https://github.com/xdnyb/game-config-validator/actions/workflows/python-check.yml/badge.svg)](https://github.com/xdnyb/game-config-validator/actions)
 
-A lightweight demo framework for automatic validation of game configuration tables.
+![Python](https://img.shields.io/badge/python-3.10+-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+
+A lightweight demo framework for validating game configuration tables.
+
+This project demonstrates how to automatically detect common configuration errors in game static data tables such as:
+
+- field type mismatch
+- invalid numeric range
+- duplicate primary keys
+- broken foreign key references
+
+The framework is designed with a simple layered architecture and supports rule-based validation driven by JSON configuration.
 
 ## 1. Project Background
 
