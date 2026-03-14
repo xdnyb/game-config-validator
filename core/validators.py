@@ -131,3 +131,50 @@ def check_foreign_key(
                 )
             )
     return issues
+
+
+def check_conditional_required(
+    table_name: str,
+    rows: List[Dict[str, str]],
+    if_field: str,
+    operator: str,
+    if_value,
+    required_field: str,
+) -> List[Issue]:
+    issues: List[Issue] = []
+
+    for idx, row in enumerate(rows, start=2):
+        left_value = row.get(if_field, "")
+        target_value = row.get(required_field, "")
+
+        matched = False
+
+        try:
+            if operator == "gt":
+                matched = int(left_value) > int(if_value)
+            elif operator == "lt":
+                matched = int(left_value) < int(if_value)
+            elif operator == "eq":
+                matched = str(left_value) == str(if_value)
+            elif operator == "neq":
+                matched = str(left_value) != str(if_value)
+        except ValueError:
+            # 如果条件字段本身无法比较，这里先跳过
+            # 这类问题通常会由 type_check/range_check 先报出来
+            continue
+
+        if matched and (target_value is None or str(target_value).strip() == ""):
+            issues.append(
+                Issue(
+                    table=table_name,
+                    row=idx,
+                    field=required_field,
+                    rule="conditional_required_check",
+                    message=(
+                        f"field '{required_field}' is required when "
+                        f"{if_field} {operator} {if_value}"
+                    ),
+                )
+            )
+
+    return issues

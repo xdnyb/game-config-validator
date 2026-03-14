@@ -30,6 +30,13 @@
       "field": "reward_id",
       "ref_table": "reward.csv",
       "ref_field": "id"
+    },
+    {
+      "type": "conditional_required",
+      "if_field": "price",
+      "operator": "gt",
+      "if_value": 100,
+      "required_field": "reward_id"
     }
   ],
   "reward.csv": [

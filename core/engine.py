@@ -1,6 +1,12 @@
 from typing import Dict, List
 from core.issue import Issue
-from core.validators import check_type, check_range, check_unique, check_foreign_key
+from core.validators import (
+    check_type,
+    check_range,
+    check_unique,
+    check_foreign_key,
+    check_conditional_required,
+)
 
 
 def run_validation(all_tables: Dict[str, List[Dict[str, str]]], rules_config: Dict) -> List[Issue]:
@@ -55,6 +61,18 @@ def run_validation(all_tables: Dict[str, List[Dict[str, str]]], rules_config: Di
                         ref_table_name=ref_table,
                         ref_rows=ref_rows,
                         ref_field=ref_field,
+                    )
+                )
+
+            elif rule_type == "conditional_required":
+                issues.extend(
+                    check_conditional_required(
+                        table_name=table_name,
+                        rows=rows,
+                        if_field=rule["if_field"],
+                        operator=rule["operator"],
+                        if_value=rule["if_value"],
+                        required_field=rule["required_field"],
                     )
                 )
 

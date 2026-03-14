@@ -95,6 +95,7 @@ Current rule categories:
 - range check
 - unique check
 - foreign key check
+- conditional business-rule check
 
 Rules are defined in `rules/rules.json`, instead of being hardcoded in the main logic.
 
