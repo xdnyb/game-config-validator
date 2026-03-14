@@ -1,5 +1,7 @@
 # Game Config Validator
 
+[![CI](https://github.com/xdnyb/game-config-validator/actions/workflows/python-check.yml/badge.svg)](https://github.com/xdnyb/game-config-validator/actions)
+
 A lightweight demo framework for automatic validation of game configuration tables.
 
 ## 1. Project Background
