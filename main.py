@@ -6,10 +6,19 @@ from core.engine import run_validation
 
 
 def main() -> None:
-    tables = {
-        "item.csv": load_csv("data/item.csv"),
-        "reward.csv": load_csv("data/reward.csv"),
-    }
+
+    DATA_MODE = os.getenv("DATA_MODE", "example")
+
+    if DATA_MODE == "ci":
+        tables = {
+            "item.csv": load_csv("data/item_valid.csv"),
+            "reward.csv": load_csv("data/reward.csv"),
+        }
+    else:
+        tables = {
+            "item.csv": load_csv("data/item.csv"),
+            "reward.csv": load_csv("data/reward.csv"),
+        }
 
     rules_config = load_rules("rules/rules.json")
     issues = run_validation(tables, rules_config)

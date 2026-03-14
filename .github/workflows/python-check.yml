@@ -23,4 +23,4 @@ jobs:
         run: python --version
 
       - name: Run validator
-        run: python main.py
+        run: DATA_MODE=ci python main.py

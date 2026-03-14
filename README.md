@@ -40,6 +40,40 @@ The framework is designed to:
 
 ## 3. Architecture Design
 
+### Rule System
+
+```mermaid
+flowchart TB
+A[Validation Rules]
+A --> B[Type Check]
+A --> C[Range Check]
+A --> D[Unique Check]
+A --> E[Foreign Key Check]
+
+B --> F[Validator]
+C --> F
+D --> F
+E --> F
+```
+
+### Architecture Overview
+
+```mermaid
+flowchart LR
+    A[Configuration Tables\nCSV / Excel / JSON]
+    B[Input Loader]
+    C[Rule Engine]
+    D[Validators]
+    E[Issue Collector]
+    F[Report Output\nConsole / JSON]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+```
+
 The framework is organized into four layers:
 
 ### 3.1 Input Layer
@@ -194,6 +228,13 @@ python main.py
 ```
 
 ## 10. Example Output
+
+### Demo Dataset
+
+Two datasets are provided:
+
+- `data/item.csv` – contains intentional errors for demonstration
+- `data/item_valid.csv` – valid dataset used in CI workflow
 
 ```
 Check failed. Issues:
